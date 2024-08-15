@@ -45,7 +45,7 @@ const Navbar = () => {
         <User2 className="nav-item" />
       </Link>
       <Link href="/compose">
-        <PlusSquare className="nav-item bg-cyan-600 dark:hover:bg-cyan-700" />
+        <PlusSquare className="nav-item bg-teal-700 dark:hover:bg-teal-800" />
       </Link>
     </nav>
   );

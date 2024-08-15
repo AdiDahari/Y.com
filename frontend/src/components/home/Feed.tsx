@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import PostForm from "@/components/home/PostForm";
+import PostSkeleton from "../posts/PostSkeleton";
+import { Skeleton } from "../ui/skeleton";
+import { Textarea } from "../ui/textarea";
 import { getPosts } from "@/lib/api";
 
 const Feed = () => {
@@ -28,7 +31,7 @@ const Feed = () => {
             onClick={() => setCurrentFeed("for-you")}
           >
             <p
-              className={`border-b-4 py-4 text-center transition-colors ${currentFeed === "for-you" ? "border-blue-500" : "border-transparent"}`}
+              className={`border-b-4 py-4 text-center transition-colors ${currentFeed === "for-you" ? "border-teal-700" : "border-transparent"}`}
             >
               For you
             </p>
@@ -39,7 +42,7 @@ const Feed = () => {
             onClick={() => setCurrentFeed("following")}
           >
             <p
-              className={`border-b-4 py-4 text-center transition-colors ${currentFeed === "following" ? "border-blue-500" : "border-transparent"}`}
+              className={`border-b-4 py-4 text-center transition-colors ${currentFeed === "following" ? "border-teal-700" : "border-transparent"}`}
             >
               Following
             </p>
@@ -48,10 +51,14 @@ const Feed = () => {
       </TabsList>
       <PostForm />
       <TabsContent value="for-you">
-        <p>For you</p>
+        {Array.from({ length: 4 }).map((_, i) => (
+          <PostSkeleton key={i} />
+        ))}
       </TabsContent>
       <TabsContent value="following">
-        <p>Following</p>
+        {Array.from({ length: 3 }).map((_, i) => (
+          <PostSkeleton key={i} />
+        ))}{" "}
       </TabsContent>
     </Tabs>
   );

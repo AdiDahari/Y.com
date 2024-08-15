@@ -48,7 +48,7 @@ const PostForm = () => {
   }
 
   return (
-    <div className="flex flex-row gap-2 border px-4">
+    <div className="flex flex-row gap-2 border pb-2 pl-6 pr-4 pt-4">
       <Image
         src="/assets/user-placeholder.jpeg"
         alt="user"
@@ -68,8 +68,9 @@ const PostForm = () => {
               <FormItem>
                 <FormControl>
                   <Textarea
+                    rows={1}
                     placeholder="What's on your mind?"
-                    className="resize-none border-b-2 border-secondary text-xl focus-visible:ring-transparent"
+                    className="max-h-[300px] w-[98%] resize-none overflow-hidden border-0 border-b-2 border-secondary text-xl focus-visible:ring-transparent"
                     {...field}
                   />
                 </FormControl>
@@ -80,9 +81,10 @@ const PostForm = () => {
             <div className=""></div>
             <Button
               type="submit"
-              className="rounded-full bg-blue-500 font-bold text-secondary-foreground"
+              disabled={!form.formState.isValid}
+              className="mr-2 rounded-full bg-teal-700 font-bold text-secondary-foreground dark:hover:bg-teal-800"
             >
-              Submit
+              Post
             </Button>
           </div>
         </form>

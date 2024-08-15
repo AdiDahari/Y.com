@@ -5,8 +5,6 @@ export const metadata: Metadata = {
   title: "Home / Y",
 };
 
-const Home = () => {
+export default function Home() {
   return <Feed />;
-};
-
-export default Home;
+}
