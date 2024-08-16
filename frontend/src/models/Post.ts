@@ -5,6 +5,6 @@ export interface Post {
   content: string;
   user: string;
   created_at: string;
-
+  user_name: string;
   comments: Comment[];
 }

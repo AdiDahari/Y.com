@@ -9,9 +9,16 @@ import {
   User2,
   Users2,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTrigger,
+} from "../ui/dialog";
 
 import Link from "next/link";
 import Logo from "./Logo";
+import PostForm from "../home/PostForm";
 import React from "react";
 
 const Navbar = () => {
@@ -44,9 +51,16 @@ const Navbar = () => {
       <Link href="/">
         <User2 className="nav-item" />
       </Link>
-      <Link href="/compose">
-        <PlusSquare className="nav-item bg-teal-700 dark:hover:bg-teal-800" />
-      </Link>
+      <Dialog>
+        <DialogTrigger>
+          <PlusSquare className="nav-item bg-teal-700 dark:hover:bg-teal-800" />
+        </DialogTrigger>
+        <DialogContent>
+          <DialogDescription>
+            <PostForm className="w-full rounded-md bg-slate-950 p-4" />
+          </DialogDescription>
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 };

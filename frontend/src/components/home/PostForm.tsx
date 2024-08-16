@@ -19,6 +19,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+type PostFormProps = {
+  className?: string;
+};
+
 const FormSchema = z.object({
   content: z
     .string()
@@ -30,7 +34,7 @@ const FormSchema = z.object({
     }),
 });
 
-const PostForm = () => {
+const PostForm = ({ className }: PostFormProps) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -48,7 +52,11 @@ const PostForm = () => {
   }
 
   return (
-    <div className="flex flex-row gap-2 border pb-2 pl-6 pr-4 pt-4">
+    <div
+      className={
+        "flex flex-row gap-2 border pb-2 pl-6 pr-4 pt-4" + " " + className
+      }
+    >
       <Image
         src="/assets/user-placeholder.jpeg"
         alt="user"

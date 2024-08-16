@@ -3,20 +3,22 @@
 import React, { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import { Post } from "@/models/Post";
+import PostCard from "../posts/PostCard";
 import PostForm from "@/components/home/PostForm";
 import PostSkeleton from "../posts/PostSkeleton";
-import { Skeleton } from "../ui/skeleton";
-import { Textarea } from "../ui/textarea";
 import { getPosts } from "@/lib/api";
 
 const Feed = () => {
   const [currentFeed, setCurrentFeed] = useState("for-you");
 
+  const [posts, setPosts] = useState<Post[]>([]);
+
   useEffect(() => {
     getPosts().then((posts) => {
-      console.log(posts);
+      setPosts(posts);
     });
-  });
+  }, []);
 
   return (
     <Tabs
@@ -51,8 +53,8 @@ const Feed = () => {
       </TabsList>
       <PostForm />
       <TabsContent value="for-you">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <PostSkeleton key={i} />
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
         ))}
       </TabsContent>
       <TabsContent value="following">

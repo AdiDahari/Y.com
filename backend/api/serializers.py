@@ -4,6 +4,7 @@ from .models import Post, Comment
 
 class CommentSerializer(serializers.ModelSerializer):
 
+    user_name = serializers.CharField(source="user.username", read_only=True)
     replies = serializers.SerializerMethodField()
 
     class Meta:
@@ -17,6 +18,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
 
+    user_name = serializers.CharField(source="user.username", read_only=True)
     comments = serializers.SerializerMethodField()
 
     class Meta:
